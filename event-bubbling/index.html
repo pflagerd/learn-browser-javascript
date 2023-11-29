@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event-bubbling</title>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+            <button id="button">Click me</button>
+        </div>
+    </div>
+    <script defer>
+        const outer = document.getElementById("outer");
+        const inner = document.getElementById("inner");
+        const button = document.getElementById("button");
+
+        outer.addEventListener('click', (event) => {
+            console.log("outer element clicked");
+            event.stopPropagation();
+        }, { capture: true });
+
+        inner.addEventListener('click', (event) => {
+            console.log("inner element clicked");
+            event.stopPropagation();
+        }, { capture: true });
+
+        button.addEventListener('click', (event) => {
+            console.log("button element clicked");
+            event.stopPropagation();
+        }, { capture: true });
+    </script>
+
+</body>
+</html>
